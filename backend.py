@@ -1,52 +1,59 @@
-from fastapi import FastAPI, File, UploadFile
-from fastapi.responses import JSONResponse
+import cv2
 import pytesseract
-from google.cloud import vision
-import io
-import requests
+from PIL import Image
+import numpy as np
+import os
 
-app = FastAPI()
+# Path to Tesseract OCR (Update this path if needed)
+pytesseract.pytesseract.tesseract_cmd = '/opt/homebrew/bin/tesseract'  # Adjust for your OS
 
-# Initialize Google Vision API client
-vision_client = vision.ImageAnnotatorClient()
+# Read image using PIL
+file_path = "image/ibupro.png"
+img = Image.open(file_path)
 
-# RxNorm API base URL (for medication lookup)
-RXNORM_API = "https://rxnav.nlm.nih.gov/REST/rxcui.json?name="
+# Convert PIL Image to OpenCV format
+img_cv = np.array(img)
 
-def extract_text_google_vision(image_bytes: bytes):
-    image = vision.Image(content=image_bytes)
-    response = vision_client.text_detection(image=image)
-    texts = response.text_annotations
-    if texts:
-        return texts[0].description.strip()
-    return ""
+# Convert RGB to BGR for OpenCV compatibility
+img_cv = cv2.cvtColor(img_cv, cv2.COLOR_RGB2BGR)
 
-def extract_text_tesseract(image_bytes: bytes):
-    return pytesseract.image_to_string(io.BytesIO(image_bytes)).strip()
+# Convert to grayscale using OpenCV
+gray = cv2.cvtColor(img_cv, cv2.COLOR_BGR2GRAY)
 
-def get_medication_info(med_name: str):
-    response = requests.get(RXNORM_API + med_name)
-    if response.status_code == 200:
-        data = response.json()
-        if "idGroup" in data and "rxnormId" in data["idGroup"]:
-            return {"rxnormId": data["idGroup"]["rxnormId"]}
-    return {"error": "Medication not found"}
+# Apply OTSU thresholding
+ret, thresh1 = cv2.threshold(gray, 0, 255, cv2.THRESH_OTSU | cv2.THRESH_BINARY_INV)
 
-@app.post("/upload/")
-async def upload_image(file: UploadFile = File(...)):
-    image_bytes = await file.read()
+# Specify structure shape and kernel size for dilation
+rect_kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (18, 18))
+
+# Apply dilation
+dilation = cv2.dilate(thresh1, rect_kernel, iterations=1)
+
+# Find contours
+contours, hierarchy = cv2.findContours(dilation, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)
+
+# Make a copy of the image to draw rectangles
+im2 = img_cv.copy()
+
+# Create an empty file for recognized text
+with open("recognized.txt", "w") as file:
+    file.write("")
+
+# Loop through contours and extract text
+for cnt in contours:
+    x, y, w, h = cv2.boundingRect(cnt)
     
-    # Try extracting text with Google Vision API
-    extracted_text = extract_text_google_vision(image_bytes)
+    # Draw a rectangle around the detected text
+    rect = cv2.rectangle(im2, (x, y), (x + w, y + h), (0, 255, 0), 2)
     
-    if not extracted_text:
-        # Fallback to Tesseract OCR
-        extracted_text = extract_text_tesseract(image_bytes)
+    # Crop the text block
+    cropped = im2[y:y + h, x:x + w]
     
-    if not extracted_text:
-        return JSONResponse(content={"error": "No text detected."}, status_code=400)
+    # Apply OCR on the cropped image
+    text = pytesseract.image_to_string(cropped)
     
-    # Lookup medication info
-    med_info = get_medication_info(extracted_text)
-    
-    return JSONResponse(content={"medication": extracted_text, "info": med_info})
+    # Append extracted text to file
+    with open("recognized.txt", "a") as file:
+        file.write(text + "\n")
+
+print("Text extraction complete. Check recognized.txt for output.")
