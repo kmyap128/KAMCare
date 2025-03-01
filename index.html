@@ -3,48 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Medication Scanner</title>
+    <title>Medication Dictionary</title>
 </head>
 <body>
-    <h2>Upload Medication Image</h2>
-    <input type="file" id="fileInput" accept="image/*">
-    <button onclick="uploadImage()">Scan</button>
+    <h1>Drug Definitions</h1>
+    <section id="input">
+        <label for="drug-term">Enter Drug Name</label>
+        <input type="text" name="drug-term" id="drug-term">
+        <button id="submit">Submit</button>
+    </section>
     
-    <h3>Extracted Medication Name:</h3>
-    <p id="medName">Waiting for input...</p>
+    <section id="content">
+
+    </section>
     
-    <h3>Medication Info:</h3>
-    <pre id="medInfo">No data available</pre>
-    
-    <script>
-        async function uploadImage() {
-            const fileInput = document.getElementById('fileInput');
-            if (!fileInput.files.length) {
-                alert("Please select an image.");
-                return;
-            }
-            
-            const formData = new FormData();
-            formData.append("file", fileInput.files[0]);
-            
-            try {
-                const response = await fetch("http://127.0.0.1:8000/upload/", {
-                    method: "POST",
-                    body: formData
-                });
-                
-                const data = await response.json();
-                
-                if (response.ok) {
-                    document.getElementById("medName").innerText = data.medication;
-                    document.getElementById("medInfo").innerText = JSON.stringify(data.info, null, 2);
-                } else {
-                    alert(data.error || "An error occurred.");
-                }
-            } catch (error) {
-                alert("Failed to connect to server.");
-            }
-        }
-    </script>
+    <script src="src/main.js"></script>
+
 </body>
 </html>

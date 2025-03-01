@@ -1,0 +1,55 @@
+{
+    "medicines": [
+      {
+        "name": "Ibuprofen",
+        "summary": "A pain reliever that also reduces swelling and fever.",
+        "use": "Used for headaches, muscle pain, toothaches, and fever relief."
+      },
+      {
+        "name": "Acetaminophen (Tylenol)",
+        "summary": "A pain reliever and fever reducer that is gentle on the stomach.",
+        "use": "Used for mild to moderate pain like headaches, colds, and fever."
+      },
+      {
+        "name": "Amoxicillin",
+        "summary": "An antibiotic that fights bacterial infections.",
+        "use": "Used to treat infections like ear infections, pneumonia, and strep throat."
+      },
+      {
+        "name": "Loratadine (Claritin)",
+        "summary": "An antihistamine that helps with allergies.",
+        "use": "Used for relief from sneezing, runny nose, and itchy eyes caused by allergies."
+      },
+      {
+        "name": "Omeprazole",
+        "summary": "Reduces stomach acid to help with heartburn and ulcers.",
+        "use": "Used to treat acid reflux, GERD, and stomach ulcers."
+      },
+      {
+        "name": "Metformin",
+        "summary": "Helps control blood sugar levels in people with diabetes.",
+        "use": "Used for managing type 2 diabetes."
+      },
+      {
+        "name": "Simvastatin",
+        "summary": "Lowers bad cholesterol and raises good cholesterol.",
+        "use": "Used to reduce the risk of heart disease and stroke."
+      },
+      {
+        "name": "Albuterol",
+        "summary": "A medication that helps open airways for easier breathing.",
+        "use": "Used to treat asthma and breathing problems like COPD."
+      },
+      {
+        "name": "Diphenhydramine (Benadryl)",
+        "summary": "An antihistamine that helps with allergies and sleep.",
+        "use": "Used for allergy relief, colds, and as a sleep aid."
+      },
+      {
+        "name": "Hydrochlorothiazide",
+        "summary": "A water pill that helps remove excess salt and water from the body.",
+        "use": "Used to treat high blood pressure and fluid retention."
+      }
+    ]
+  }
+  
