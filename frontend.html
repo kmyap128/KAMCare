@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medication Scanner</title>
+</head>
+<body>
+    <h2>Upload Medication Image</h2>
+    <input type="file" id="fileInput" accept="image/*">
+    <button onclick="uploadImage()">Scan</button>
+    
+    <h3>Extracted Medication Name:</h3>
+    <p id="medName">Waiting for input...</p>
+    
+    <h3>Medication Info:</h3>
+    <pre id="medInfo">No data available</pre>
+    
+    <script>
+        async function uploadImage() {
+            const fileInput = document.getElementById('fileInput');
+            if (!fileInput.files.length) {
+                alert("Please select an image.");
+                return;
+            }
+            
+            const formData = new FormData();
+            formData.append("file", fileInput.files[0]);
+            
+            try {
+                const response = await fetch("http://127.0.0.1:8000/upload/", {
+                    method: "POST",
+                    body: formData
+                });
+                
+                const data = await response.json();
+                
+                if (response.ok) {
+                    document.getElementById("medName").innerText = data.medication;
+                    document.getElementById("medInfo").innerText = JSON.stringify(data.info, null, 2);
+                } else {
+                    alert(data.error || "An error occurred.");
+                }
+            } catch (error) {
+                alert("Failed to connect to server.");
+            }
+        }
+    </script>
+</body>
+</html>
