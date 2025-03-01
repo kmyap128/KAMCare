@@ -90,6 +90,3 @@ if __name__ == "__main__":
     imageName = input("Enter Image Name with Exension: (image.png): ")
     img = openImage(imageName)
     processImage(img)
-
-
-
