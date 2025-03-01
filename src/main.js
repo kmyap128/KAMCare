@@ -2,7 +2,7 @@ let searchTerm = '';
 let obj = []; 
 
 function fetchJSONData() {
-    fetch('../drugs.json')
+    fetch('../data/drug.json')
         .then(response => {
             if (!response.ok) {
                 throw new Error(`HTTP error! Status: ${response.status}`);
@@ -10,7 +10,7 @@ function fetchJSONData() {
             return response.json();  
         })
         .then(data => {
-            obj = data.medicines; 
+            obj = data.drugs; 
         })
         .catch(error => console.error('Failed to fetch data:', error)); 
 }
@@ -29,9 +29,10 @@ const processTerm = () => {
     
     if (info) {
         document.querySelector('#content').innerHTML =
-            `<h3>${info.name}</h3>
-            <p>Summary: ${info.summary}</p>
-            <p>Common Uses: ${info.use}</p>`;     
+            `<h3>${info.medicinal_name} (Generic Name: ${info.generic_name})</h3>
+            <p>Purpose: ${info.purpose}</p>
+            <p>Usage: ${info.usage}</p>
+            <p>Warnings: ${info.warning}</p>`;     
     } else {
         document.querySelector('#content').innerHTML =
             '<p>No matching drug found.</p>';
@@ -39,7 +40,8 @@ const processTerm = () => {
 };
 
 const findDefinition = (term) => {
-    let info = obj.find(drug => drug.name.toLowerCase() === term.toLowerCase()); 
+    console.log(obj);
+    let info = obj.find(drug => drug.medicinal_name.toLowerCase() === term.toLowerCase()); 
     return info || null;
 };
 
