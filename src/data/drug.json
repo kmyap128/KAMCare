@@ -1,0 +1,243 @@
+{
+    "drugs": [
+      {
+        "medicinal_name": "Atorvastatin",
+        "generic_name": "Lipitor",
+        "purpose": "Lowers cholesterol and reduces the risk of heart disease.",
+        "usage": "Take once daily with or without food. Follow the doctor’s prescription strictly.",
+        "warning": "May cause liver problems; avoid excessive alcohol consumption. Not recommended during pregnancy."
+      },
+      {
+        "medicinal_name": "Metformin",
+        "generic_name": "Glucophage",
+        "purpose": "Used to manage type 2 diabetes by controlling blood sugar levels.",
+        "usage": "Take with meals to reduce stomach upset. Follow the prescribed dosage strictly.",
+        "warning": "May cause lactic acidosis in rare cases. Inform the doctor of kidney issues before use."
+      },
+      {
+        "medicinal_name": "Lisinopril",
+        "generic_name": "Prinivil, Zestril",
+        "purpose": "Treats high blood pressure and heart failure.",
+        "usage": "Take once daily, with or without food. Maintain consistent usage time.",
+        "warning": "Avoid use during pregnancy. May cause dizziness; get up slowly from sitting/lying positions."
+      },
+      {
+        "medicinal_name": "Omeprazole",
+        "generic_name": "Prilosec",
+        "purpose": "Reduces stomach acid production to treat acid reflux and ulcers.",
+        "usage": "Take before meals, usually once daily. Swallow capsules whole.",
+        "warning": "Long-term use may increase fracture risk. Not recommended for immediate heartburn relief."
+      },
+      {
+        "medicinal_name": "Alprazolam",
+        "generic_name": "Xanax",
+        "purpose": "Used to treat anxiety and panic disorders.",
+        "usage": "Take as prescribed, usually 2-3 times daily. Avoid abrupt discontinuation.",
+        "warning": "May cause drowsiness and dependency. Avoid alcohol and operating heavy machinery."
+      },
+      {
+        "medicinal_name": "Amoxicillin",
+        "generic_name": "Amoxil",
+        "purpose": "Antibiotic used to treat bacterial infections.",
+        "usage": "Take with or without food as directed. Complete full course of treatment.",
+        "warning": "Do not use if allergic to penicillin. May cause diarrhea."
+      },
+      {
+        "medicinal_name": "Azithromycin",
+        "generic_name": "Zithromax",
+        "purpose": "Used to treat bacterial infections including respiratory infections and STDs.",
+        "usage": "Take once daily with or without food. Follow full prescription course.",
+        "warning": "May cause stomach upset. Inform doctor if allergic to macrolides."
+      },
+      {
+        "medicinal_name": "Hydrochlorothiazide",
+        "generic_name": "Microzide",
+        "purpose": "Diuretic used to treat high blood pressure and fluid retention.",
+        "usage": "Take once daily, preferably in the morning.",
+        "warning": "May cause dizziness and dehydration. Monitor potassium levels."
+      },
+      {
+        "medicinal_name": "Levothyroxine",
+        "generic_name": "Synthroid",
+        "purpose": "Used to treat hypothyroidism.",
+        "usage": "Take once daily on an empty stomach, 30 minutes before breakfast.",
+        "warning": "Do not switch brands without consulting a doctor. Overdose can cause serious side effects."
+      },
+      {
+        "medicinal_name": "Amlodipine",
+        "generic_name": "Norvasc",
+        "purpose": "Used to treat high blood pressure and chest pain (angina).",
+        "usage": "Take once daily with or without food.",
+        "warning": "May cause swelling in the ankles and dizziness. Avoid grapefruit."
+      },
+      {
+        "medicinal_name": "Sertraline",
+        "generic_name": "Zoloft",
+        "purpose": "Used to treat depression, anxiety, and OCD.",
+        "usage": "Take once daily with or without food.",
+        "warning": "May cause drowsiness and nausea. Avoid alcohol and sudden discontinuation."
+      },
+      {
+        "medicinal_name": "Losartan",
+        "generic_name": "Cozaar",
+        "purpose": "Treats high blood pressure and reduces stroke risk.",
+        "usage": "Take once daily with or without food.",
+        "warning": "Not safe during pregnancy. May cause dizziness."
+      },
+      {
+        "medicinal_name": "Gabapentin",
+        "generic_name": "Neurontin",
+        "purpose": "Used to treat nerve pain and seizures.",
+        "usage": "Take 2-3 times daily as prescribed.",
+        "warning": "May cause dizziness and drowsiness. Avoid alcohol."
+      },
+      {
+        "medicinal_name": "Prednisone",
+        "generic_name": "Deltasone",
+        "purpose": "Used to treat inflammation and immune-related conditions.",
+        "usage": "Take with food to prevent stomach upset.",
+        "warning": "Long-term use may cause osteoporosis. Follow tapering schedule."
+      },
+      {
+        "medicinal_name": "Clopidogrel",
+        "generic_name": "Plavix",
+        "purpose": "Prevents blood clots in heart disease and stroke patients.",
+        "usage": "Take once daily with or without food.",
+        "warning": "May increase bleeding risk. Inform doctor before surgery."
+      },
+      {
+        "medicinal_name": "Tramadol",
+        "generic_name": "Ultram",
+        "purpose": "Used to relieve moderate to severe pain.",
+        "usage": "Take as prescribed with or without food.",
+        "warning": "May cause drowsiness and addiction. Avoid alcohol."
+      },
+      {
+        "medicinal_name": "Fluoxetine",
+        "generic_name": "Prozac",
+        "purpose": "Treats depression, OCD, and anxiety disorders.",
+        "usage": "Take once daily with or without food.",
+        "warning": "May cause nausea and insomnia. Avoid abrupt discontinuation."
+      },
+      {
+        "medicinal_name": "Ciprofloxacin",
+        "generic_name": "Cipro",
+        "purpose": "Used to treat bacterial infections.",
+        "usage": "Take with or without food. Avoid dairy products.",
+        "warning": "May cause tendon rupture. Avoid excessive sunlight."
+      },
+      {
+        "medicinal_name": "Furosemide",
+        "generic_name": "Lasix",
+        "purpose": "Diuretic used to treat fluid retention and high blood pressure.",
+        "usage": "Take in the morning to prevent nighttime urination.",
+        "warning": "May cause dehydration and low potassium levels."
+      },
+      {
+        "medicinal_name": "Tamsulosin",
+        "generic_name": "Flomax",
+        "purpose": "Used to treat enlarged prostate symptoms.",
+        "usage": "Take 30 minutes after the same meal daily.",
+        "warning": "May cause dizziness and fainting."
+      },
+      {
+        "medicinal_name": "Escitalopram",
+        "generic_name": "Lexapro",
+        "purpose": "Used to treat depression and anxiety disorders.",
+        "usage": "Take once daily with or without food.",
+        "warning": "May cause drowsiness and sexual dysfunction."
+      },
+      {
+        "medicinal_name": "Venlafaxine",
+        "generic_name": "Effexor",
+        "purpose": "Used to treat depression and anxiety disorders.",
+        "usage": "Take with food to reduce stomach upset.",
+        "warning": "May cause dizziness and increased blood pressure."
+      },
+      {
+        "medicinal_name": "Bupropion",
+        "generic_name": "Wellbutrin",
+        "purpose": "Used to treat depression and aid smoking cessation.",
+        "usage": "Take as prescribed, with or without food.",
+        "warning": "May increase seizure risk. Avoid alcohol."
+      },
+      {
+        "medicinal_name": "Spironolactone",
+        "generic_name": "Aldactone",
+        "purpose": "Used to treat fluid retention and high blood pressure.",
+        "usage": "Take once or twice daily as directed.",
+        "warning": "May cause high potassium levels. Avoid potassium supplements."
+      },
+      {
+        "medicinal_name": "Meloxicam",
+        "generic_name": "Mobic",
+        "purpose": "Used to treat arthritis pain and inflammation.",
+        "usage": "Take once daily with food.",
+        "warning": "May increase risk of heart attack and stroke."
+      },
+      {
+        "medicinal_name": "Lorazepam",
+        "generic_name": "Ativan",
+        "purpose": "Used to treat anxiety and seizures.",
+        "usage": "Take as prescribed, typically 2-3 times daily.",
+        "warning": "May cause drowsiness and dependence. Avoid alcohol."
+      },
+      {
+        "medicinal_name": "Mirtazapine",
+        "generic_name": "Remeron",
+        "purpose": "Used to treat depression and anxiety disorders.",
+        "usage": "Take once daily at bedtime.",
+        "warning": "May cause weight gain and drowsiness."
+      },
+      {
+        "medicinal_name": "Doxycycline",
+        "generic_name": "Vibramycin",
+        "purpose": "Used to treat bacterial infections and acne.",
+        "usage": "Take with a full glass of water. Avoid lying down for 30 minutes after taking.",
+        "warning": "May cause sun sensitivity. Avoid dairy and iron supplements."
+      },
+      {
+        "medicinal_name": "Hydroxyzine",
+        "generic_name": "Vistaril",
+        "purpose": "Used to treat anxiety and allergic reactions.",
+        "usage": "Take as prescribed, with or without food.",
+        "warning": "May cause drowsiness. Avoid alcohol."
+      },
+      {
+        "medicinal_name": "Carvedilol",
+        "generic_name": "Coreg",
+        "purpose": "Used to treat high blood pressure and heart failure.",
+        "usage": "Take with food to reduce the risk of dizziness.",
+        "warning": "May cause low blood pressure and fatigue."
+      },
+      {
+        "medicinal_name": "Paroxetine",
+        "generic_name": "Paxil",
+        "purpose": "Used to treat depression, OCD, and anxiety disorders.",
+        "usage": "Take once daily, usually in the morning.",
+        "warning": "May cause drowsiness and sexual dysfunction."
+      },
+      {
+        "medicinal_name": "Celecoxib",
+        "generic_name": "Celebrex",
+        "purpose": "Used to treat pain and inflammation.",
+        "usage": "Take as prescribed, with or without food.",
+        "warning": "May increase the risk of heart attack and stroke."
+      },
+      {
+        "medicinal_name": "Clonidine",
+        "generic_name": "Catapres",
+        "purpose": "Used to treat high blood pressure and ADHD.",
+        "usage": "Take as prescribed, usually once or twice daily.",
+        "warning": "May cause drowsiness and dry mouth."
+      },
+      {
+        "medicinal_name": "Warfarin",
+        "generic_name": "Coumadin",
+        "purpose": "Prevents blood clots in patients with heart conditions.",
+        "usage": "Take at the same time daily as directed.",
+        "warning": "Avoid sudden changes in diet, especially green leafy vegetables."
+      }
+    ]
+  }
+  

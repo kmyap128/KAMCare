@@ -1,5 +1,8 @@
 # KAMCare
 
 Need to Install:
-- FastAPI: pip install fastapi
-- Pytesseract: pip install pytesseract
+- Pytesseract: brew install tesseract
+-       Note: pip DOES NOT work. pip installs the Python package called pytesseract but we want the real ORC engine 
+
+- Cv2: pip install cv2
+- PIL: pip install pil
