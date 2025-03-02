@@ -5,6 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Medication Dictionary</title>
     <link rel="stylesheet" href="css/style.css">
+    <script type="module">
+        import { GoogleGenerativeAI } from "https://esm.sh/@google/generative-ai";
+    
+        const genAI = new GoogleGenerativeAI("AIzaSyDfg8Lp2cYCnpQ0oQ6idmUTebjYEudHthU");
+        const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+
+        const submitButton = document.querySelector('#submitPrompt');
+        const response = document.querySelector('#response');
+    
+        const search = () => {
+            const prompt = document.querySelector('#gemini').value;
+
+            model.generateContent(prompt)
+                .then(result => {
+                    response.innerHTML = `<p>${result.response.text()}</p>`;
+                })
+                .catch(error => console.error("Error:", error));
+        };
+
+        submitButton.addEventListener('click', search);        
+   </script>  
 </head>
 <body>
     <div id="wrapper">
@@ -22,8 +43,12 @@
     
         </section>
 
-        <section id="footer">
+        <section id="chatbox">
+            <input type="text" name="gemini" id="gemini" placeholder="Enter a prompt">
+            <button id="submitPrompt">Submit</button>
+            <section id="response">
 
+            </section>
         </section>
     </div>
     
