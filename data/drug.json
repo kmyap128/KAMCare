@@ -342,7 +342,14 @@
         "purpose": "Lowers cholesterol and reduces the risk of cardiovascular disease.",
         "usage": "Take once daily in the evening.",
         "warning": "Avoid grapefruit and excessive alcohol."
-      }
+      },
+      {
+      "medicinal_name": "Acetaminophen",
+      "generic_name": "Acetaminophen",
+      "purpose": "Relieves pain and reduces fever.",
+      "usage": "Take as needed, following the dosage instructions on the label or as prescribed by a doctor. Do not exceed the recommended dose.",
+      "warning": "Excessive use may cause liver damage. Avoid alcohol while taking this medication. Consult a doctor if pregnant or breastfeeding."
+}
     ]
   }
   

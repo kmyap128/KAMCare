@@ -5,6 +5,7 @@ import pytesseract
 import numpy as np
 import platform 
 import os
+import json
 
 
 def detectTesseract():
@@ -26,7 +27,6 @@ def detectTesseract():
 
     return tesseract_path
 
-pytesseract.pytesseract.tesseract_cmd = detectTesseract()
 
 def video_detect():
     # Reading the video from the webcam
@@ -34,7 +34,6 @@ def video_detect():
 
     font_scale = 2.0
     font = cv2.FONT_HERSHEY_DUPLEX
-    text_data = {"detected_text": []}  # Dictionary to store detected text
 
     # Checking whether the camera has been accessed using the isOpened function
     if (video.isOpened() == False):
@@ -79,7 +78,7 @@ def parseText(text_file, json_file):
     drug_info = {drug["medicinal_name"].lower(): drug for drug in data["drugs"]}
 
     # Read extracted text file
-    with open(text_file, "r", encoding="utf-8") as file:
+    with open(text_file, "r") as file:
         text_content = file.read().lower()  # Convert entire text to lowercase
 
     # Use a set to track found drug names
@@ -100,7 +99,7 @@ if __name__ == "__main__":
     
     video_detect()
 
-    parsed_results = parseText("video_detected_text.txt", "data/drug.json")
+    parsed_results = parseText("video_detected_text.txt", "../data/drug.json")
     if parsed_results:
         print("-" * 50)
         for result in parsed_results:
