@@ -7,6 +7,7 @@ import platform
 import os
 import json
 
+
 def detectTesseract():
     system_os = platform.system()
     tesseract_path = None
@@ -99,14 +100,22 @@ if __name__ == "__main__":
     video_detect()
 
     parsed_results = parseText("video_detected_text.txt", "data/drug.json")
+    output_data = [] 
+    
     if parsed_results:
+        
         print("-" * 50)
         for result in parsed_results:
-            print(f"Medicinal Name: {result['medicinal_name']}")
-            print(f"Generic Name: {result['generic_name']}")
-            print(f"Purpose: {result['purpose']}")
-            print(f"Usage: {result['usage']}")
-            print(f"Warning: {result['warning']}")
+            output_data.append({
+            "Medicinal Name": result['medicinal_name'],
+            "Generic Name": result['generic_name'],
+            "Purpose": result['purpose'],
+            "Usage": result['usage'],
+            "Warning": result['warning']
+        })
+        with open("output_results.json", "w", encoding="utf-8") as json_file:
+            json.dump(output_data, json_file, indent=4)
+            
         print("-" * 50)
     else:
         print("No matches found.")

@@ -7,7 +7,7 @@ const port = process.env.PORT || process.env.NODE_PORT || 3000;
 
 const handleGet = (request, response, parsedUrl) => {
   console.log(parsedUrl.pathname);
-  if (parsedUrl.pathname === '/style.css') {
+  if (parsedUrl.pathname === './style.css') {
     htmlHandler.getCSS(request, response);
   } else if (parsedUrl.pathname === '/kam_care-02.png') {
     htmlHandler.getLogo(request, response);
