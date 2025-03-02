@@ -349,7 +349,76 @@
       "purpose": "Relieves pain and reduces fever.",
       "usage": "Take as needed, following the dosage instructions on the label or as prescribed by a doctor. Do not exceed the recommended dose.",
       "warning": "Excessive use may cause liver damage. Avoid alcohol while taking this medication. Consult a doctor if pregnant or breastfeeding."
-}
-    ]
+}, 
+  {
+    "medicinal_name": "Influenza Vaccine",
+    "generic_name": "Flu Vaccine",
+    "purpose": "Prevents infection caused by the influenza virus.",
+    "usage": "Administered annually via injection or nasal spray as recommended by healthcare providers.",
+    "warning": "Mild side effects like soreness at the injection site or mild flu-like symptoms may occur. Consult a doctor if allergic to eggs or if you have a history of severe allergic reactions to vaccines."
+  },
+  {
+    "medicinal_name": "COVID-19 Vaccine",
+    "generic_name": "mRNA or Viral Vector COVID-19 Vaccine",
+    "purpose": "Provides immunity against COVID-19 and reduces the risk of severe illness.",
+    "usage": "Administered in one or more doses as per manufacturer guidelines. Booster doses may be required.",
+    "warning": "Common side effects include fever, fatigue, and injection site pain. Severe allergic reactions are rare. Consult a doctor if you have a history of allergic reactions to vaccines."
+  },
+  {
+    "medicinal_name": "Hepatitis B Vaccine",
+    "generic_name": "HepB Vaccine",
+    "purpose": "Prevents infection caused by the hepatitis B virus (HBV).",
+    "usage": "Administered in a series of 2-3 doses over 6 months, usually starting at birth.",
+    "warning": "Side effects may include soreness at the injection site or mild fever. People with severe allergies to yeast should consult a doctor."
+  },
+  {
+    "medicinal_name": "Measles, Mumps, and Rubella (MMR) Vaccine",
+    "generic_name": "MMR Vaccine",
+    "purpose": "Provides immunity against measles, mumps, and rubella viruses.",
+    "usage": "Given in two doses, typically in childhood (12-15 months and 4-6 years old).",
+    "warning": "Mild rash or fever may occur. Avoid if pregnant or immunocompromised unless advised by a doctor."
+  },
+  {
+    "medicinal_name": "Tetanus, Diphtheria, and Pertussis Vaccine",
+    "generic_name": "Tdap Vaccine",
+    "purpose": "Protects against tetanus, diphtheria, and pertussis (whooping cough).",
+    "usage": "Recommended every 10 years as a booster, with an initial dose in adolescence or adulthood.",
+    "warning": "Common side effects include redness or swelling at the injection site. Rare but severe allergic reactions may occur."
+  },
+  {
+    "medicinal_name": "Human Papillomavirus (HPV) Vaccine",
+    "generic_name": "HPV Vaccine",
+    "purpose": "Prevents infections from human papillomavirus, which can cause cervical and other cancers.",
+    "usage": "Given in 2-3 doses, typically recommended for adolescents before exposure to the virus.",
+    "warning": "Mild pain, swelling, or dizziness may occur. Not recommended during pregnancy."
+  },
+  {
+    "medicinal_name": "Varicella (Chickenpox) Vaccine",
+    "generic_name": "Varicella Vaccine",
+    "purpose": "Provides immunity against the varicella-zoster virus, which causes chickenpox.",
+    "usage": "Administered in two doses, typically in childhood (12-15 months and 4-6 years old).",
+    "warning": "Mild rash or fever may occur. Avoid if pregnant or immunocompromised unless advised by a doctor."
+  },
+  {
+    "medicinal_name": "Pneumococcal Vaccine",
+    "generic_name": "PCV13, PPSV23",
+    "purpose": "Protects against pneumococcal bacteria that cause pneumonia, meningitis, and bloodstream infections.",
+    "usage": "Recommended for young children, older adults, and individuals with certain medical conditions.",
+    "warning": "Common side effects include soreness at the injection site, fever, and fatigue."
+  },
+  {
+    "medicinal_name": "Rotavirus Vaccine",
+    "generic_name": "Rotavirus Vaccine",
+    "purpose": "Prevents rotavirus infection, a leading cause of severe diarrhea in infants and young children.",
+    "usage": "Given orally in two or three doses before the age of 8 months.",
+    "warning": "Mild diarrhea or irritability may occur. Rare risk of intussusception (intestinal blockage)."
+  },
+  {
+    "medicinal_name": "Meningococcal Vaccine",
+    "generic_name": "MenACWY, MenB",
+    "purpose": "Prevents meningococcal disease, which can cause meningitis and bloodstream infections.",
+    "usage": "Recommemended for adolescents, college students, and travelers to high-risk areas.",
+    "warning": "Side effects are usually mild, including pain at the injection site or mild fever."
+  }
   }
   
