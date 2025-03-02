@@ -26,14 +26,6 @@ def detectTesseract():
 
     return tesseract_path
 
-
-def openImage(imageName):
-    file_path = "image/" + imageName
-    if not os.path.exists(file_path):
-        raise FileNotFoundError(f"Image file '{file_path}' not found!")
-    return Image.open(file_path)
-
-
 # removes trademark and registered symbols: ™, ®
 def clean_text(text):
     text = re.sub(r"[™®]", "", text)        # remove trademark & registered symbols
@@ -41,64 +33,78 @@ def clean_text(text):
     # return text.strip()                     # keeps new lines but remove leading/trailing spaces
     return text
 
-def processImage(img):
-    # Convert PIL image to OpenCV format
-    img_cv = np.array(img)
-    img_cv = cv2.cvtColor(img_cv, cv2.COLOR_RGB2BGR)
-    gray = cv2.cvtColor(img_cv, cv2.COLOR_BGR2GRAY)
+def openImage(imageName):
+    file_path = "image/" + imageName
+    if not os.path.exists(file_path):
+        raise FileNotFoundError(f"Image file '{file_path}' not found!")
+    img = cv2.imread(file_path)
+    img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+    img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+    # cv2.imshow("Output", img)
+    # cv2.waitKey(0)
+    return img
+
+def detectText(img):
+    """Detects text using Tesseract and stores it in a file."""
+    text = pytesseract.image_to_string(img)
     
-    # reduces noise
-    gray = cv2.GaussianBlur(gray, (5, 5), 0)
-
-    # Apply OTSU thresholding: changges the image to binary (heavy contrast black/white)
-    thresh1 = cv2.adaptiveThreshold(
-        gray, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY_INV, 21, 10
-    )
-
-    # Specify structure shape and kernel size for dilation
-    rect_kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (18, 18))
-    dilation = cv2.dilate(thresh1, rect_kernel, iterations=1)
-
-    # Find contours
-    contours, hierarchy = cv2.findContours(dilation, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
-
-    # Copy image to draw rectangles
-    im2 = img_cv.copy()
-    extracted_text = []
-
-    # Apply OCR to the full image first (before drawing boxes)
-    text = pytesseract.image_to_string(gray).strip()
-    cleaned_text = clean_text(text)
-
-
-
-    print(cleaned_text)
-
-
-
-    if cleaned_text:
-        extracted_text.append(cleaned_text)
-
-    # Draw bounding boxes around detected text regions
-    for cnt in contours:
-        x, y, w, h = cv2.boundingRect(cnt)
-        cv2.rectangle(im2, (x, y), (x + w, y + h), (0, 255, 0), 2)  # Green box
-
-    # Write extracted text to file
-
-    if extracted_text:
-        with open("recognized.txt", "w") as file:
-            file.write("\n".join(extracted_text))
-
-
-    # Display the image with bounding boxes around text
-    cv2.imshow("gray", thresh1)
-    cv2.waitKey(0)  # Wait for a key press to close the window
-    cv2.destroyAllWindows()  # Close the image window
+    # Save text to image_text.txt
+    with open("image_text.txt", "w") as file:
+        file.write(text)
     
+    print("Extracted text saved to image_text.txt")
+    return text
+
+def draw_boxes_on_character(img):
+    img_width = img.shape[1]
+    img_height = img.shape[0]
+    boxes = pytesseract.image_to_boxes(img)
+    for box in boxes.splitlines():
+        box = box.split(" ")
+        character = box[0]
+        x = int(box[1])
+        y = int(box[2])
+        x2 = int(box[3])
+        y2 = int(box[4])
+
+        # Draw GREEN bounding box
+        cv2.rectangle(img, (x, img_height - y), (x2, img_height - y2), (0, 255, 0), 2)
+
+        # Draw character label in GREEN
+        cv2.putText(img, character, (x, img_height -y2), cv2.FONT_HERSHEY_COMPLEX, 1, (0, 0, 255), 1)
+    
+    return img
+
+def draw_boxes_on_text(img):
+    # Return raw information about the detected texts
+    raw_data = pytesseract.image_to_data(img)
+    for count, data in enumerate(raw_data.splitlines()):
+        if count > 0:
+            data = data.split()
+            if len(data) == 12:
+                x, y, w, h, content = int(data[6]), int(data[7]), int(data[8]), int(data[9]), data[11]
+                
+                cv2.rectangle(img, (x, y), (w + x, h + y), (0, 255, 0), 2)
+                cv2.putText(img, content, (x, y - 5), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 255, 0), 2)
+                
+    return img
+
 
 if __name__ == "__main__":
     pytesseract.pytesseract.tesseract_cmd = detectTesseract()
-    imageName = input("Enter Image Name with Exension (imageName.png): ")
+    imageName = input("Enter Image Name with Extension (image.png): ")
     img = openImage(imageName)
-    processImage(img)
+    
+    # Detect text and store in file
+    text = detectText(img)
+
+    # Draw bounding boxes on characters
+    img = draw_boxes_on_character(img)
+    cv2.imshow("Character Bounding Boxes", img)
+
+    # Draw bounding boxes on full text
+    img = draw_boxes_on_text(img)
+    cv2.imshow("Text Bounding Boxes", img)
+
+    cv2.waitKey(0)
+    cv2.destroyAllWindows()
