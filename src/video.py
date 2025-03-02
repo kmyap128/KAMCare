@@ -56,7 +56,7 @@ while True:
             b = b.split(' ')
             x, y, xtop_right, ytop_right = int(b[1]), int(b[2]), int(b[3]), int(b[4])
             cv2.rectangle(frame, (x, height-y),
-                          (xtop_right, height - ytop_right), (128,0,128), 4)
+                    (xtop_right, height - ytop_right), (128,0,128), 4)
 
         if recognized_text:
             with open("video_detected_text.txt", "w") as text_file:
