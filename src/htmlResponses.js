@@ -17,10 +17,10 @@ const getCSS = (request, response) => {
 };
 
 const getLogo = (request, response) => {
-    response.writeHead(200, { 'Content-Type': 'image/png' });
-    response.write(logo);
-    response.end();
-}
+  response.writeHead(200, { 'Content-Type': 'image/png' });
+  response.write(logo);
+  response.end();
+};
 
 module.exports = {
   getIndex,
