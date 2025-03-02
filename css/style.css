@@ -53,17 +53,80 @@ body, html {
 /* Input Section */
 #input {
     background: #E5E1DA;
+    padding: 45px; /* Slightly increased padding */
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
 }
 
+/* Label Styling - Slightly Larger */
+#input label {
+    font-size: 1.6em; /* Slight increase */
+    font-weight: bold;
+    margin-bottom: 12px;
+    text-align: center;
+}
+
+/* Search Box - Slightly Bigger */
+#drug-term {
+    width: 92%;
+    max-width: 300px; /* Slightly wider */
+    height: 10px;
+    padding: 16px; /* Moderate padding */
+    font-size: 1.4em; /* Small increase */
+    border: 2px solid #0073e6; /* Standard border */
+    border-radius: 6px;
+    margin-bottom: 18px; /* Space below input */
+    text-align: center;
+}
+
+
 /* Content Section */
+/* Content Section - Drug Definition Box */
 #content {
     background: white;
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 1.3em; /* Increase text size */
+    line-height: 1.6; /* Improve readability */
+    font-weight: 500; /* Slightly bolder text */
+    width: 80%;
+    max-width: 900px;
 }
+
 
 /* Chatbox (Now Below Content) */
 #chatbox {
+    
     background: #F1F0E8;
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 1.0em; /* Increase text size */
+    line-height: 1.6; /* Improve readability */
+    font-weight: 500; /* Slightly bolder text */
+    width: 80%;
+    max-width: 900px;
 }
+
+/* Chatbox Input - Make Search Bar Bigger */
+#chatbox input {
+    width: 92%;
+    max-width: 300px; /* Slightly wider */
+    height: 10px;
+    padding: 16px; /* Moderate padding */
+    font-size: 1.4em; /* Small increase */
+    border: 2px solid #0073e6; /* Standard border */
+    border-radius: 6px;
+    margin-bottom: 18px; /* Space below input */
+    text-align: center;
+    margin-bottom: 15px;
+    
+}
+
 
 /* Buttons */
 button {
@@ -78,6 +141,7 @@ button {
 /* Submit Button */
 #submit {
     background-color: #0073e6;
+    margin-bottom: 18px; /* Space below input */
     color: white;
 }
 
