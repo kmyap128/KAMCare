@@ -10,6 +10,16 @@
     "chatbox";
     max-width: 100vw;
 }
+#light-mode{
+    position: absolute;
+    top: 40px; 
+    right: 40px; 
+    padding: 10px 20px;
+    background-color: rgb(195, 0, 255);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
 
 
 @media screen and (min-width: 1200px ){
