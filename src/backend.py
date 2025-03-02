@@ -7,7 +7,6 @@ import platform
 import re       # for text cleaning the "TM, R" symbols
 
 
-
 def detectTesseract():
     system_os = platform.system()
     tesseract_path = None
@@ -37,56 +36,69 @@ def openImage(imageName):
 
 # removes trademark and registered symbols: ™, ®
 def clean_text(text):
-    if not isinstance(text, str):           # make sure text is a valid string
-        return ""
     text = re.sub(r"[™®]", "", text)        # remove trademark & registered symbols
-    text = re.sub(r"[ \t]+", " ", text)     # replace multiple spaces with a single space
-    return text.strip()                     # keeps new lines but remove leading/trailing spaces
+    # text = re.sub(r"[ \t]+", " ", text)     # replace multiple spaces with a single space
+    # return text.strip()                     # keeps new lines but remove leading/trailing spaces
+    return text
 
 def processImage(img):
-    # PIL image to OpenCV format
+    # Convert PIL image to OpenCV format
     img_cv = np.array(img)
-
     img_cv = cv2.cvtColor(img_cv, cv2.COLOR_RGB2BGR)
     gray = cv2.cvtColor(img_cv, cv2.COLOR_BGR2GRAY)
+    
+    # reduces noise
+    gray = cv2.GaussianBlur(gray, (5, 5), 0)
 
-    # OTSU thresholding
-    ret, thresh1 = cv2.threshold(gray, 0, 255, cv2.THRESH_OTSU | cv2.THRESH_BINARY_INV)
+    # Apply OTSU thresholding: changges the image to binary (heavy contrast black/white)
+    thresh1 = cv2.adaptiveThreshold(
+        gray, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY_INV, 21, 10
+    )
 
-    # specify structure shape and kernel size for dilation
+    # Specify structure shape and kernel size for dilation
     rect_kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (18, 18))
     dilation = cv2.dilate(thresh1, rect_kernel, iterations=1)
-    contours, hierarchy = cv2.findContours(dilation, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)
 
+    # Find contours
+    contours, hierarchy = cv2.findContours(dilation, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+
+    # Copy image to draw rectangles
     im2 = img_cv.copy()
     extracted_text = []
 
-    # loop through contours and extract text
+    # Apply OCR to the full image first (before drawing boxes)
+    text = pytesseract.image_to_string(gray).strip()
+    cleaned_text = clean_text(text)
+
+
+
+    print(cleaned_text)
+
+
+
+    if cleaned_text:
+        extracted_text.append(cleaned_text)
+
+    # Draw bounding boxes around detected text regions
     for cnt in contours:
         x, y, w, h = cv2.boundingRect(cnt)
-        
-        # draw a rectangle around the detected text
-        rect = cv2.rectangle(im2, (x, y), (x + w, y + h), (0, 255, 0), 2)
-        
-        # crop the text block
-        cropped = im2[y:y + h, x:x + w]
-        
-        # apply OCR on the cropped image
-        text = pytesseract.image_to_string(cropped)
-        
-        cleaned_text = clean_text(text)
+        cv2.rectangle(im2, (x, y), (x + w, y + h), (0, 255, 0), 2)  # Green box
 
-        if cleaned_text:
-            extracted_text.append(cleaned_text)
+    # Write extracted text to file
 
-        # add extracted text to file
+    if extracted_text:
         with open("recognized.txt", "w") as file:
             file.write("\n".join(extracted_text))
 
 
+    # Display the image with bounding boxes around text
+    cv2.imshow("gray", thresh1)
+    cv2.waitKey(0)  # Wait for a key press to close the window
+    cv2.destroyAllWindows()  # Close the image window
+    
+
 if __name__ == "__main__":
     pytesseract.pytesseract.tesseract_cmd = detectTesseract()
-
-    imageName = input("Enter Image Name with Exension: (image.png): ")
+    imageName = input("Enter Image Name with Exension (imageName.png): ")
     img = openImage(imageName)
     processImage(img)
