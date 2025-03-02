@@ -237,7 +237,22 @@
         "purpose": "Prevents blood clots in patients with heart conditions.",
         "usage": "Take at the same time daily as directed.",
         "warning": "Avoid sudden changes in diet, especially green leafy vegetables."
+      },
+      {
+        "medicinal_name": "Acetaminophen",
+        "generic_name": "Tylenol",
+        "purpose": "Reduces pain and fever.",
+        "usage": "Take as needed, following dosage guidelines.",
+        "warning": "Excessive use may cause liver damage."
+      },
+      {
+        "medicinal_name": "Ibuprofen",
+        "generic_name": "Advil, Motrin",
+        "purpose": "Reduces pain, fever, and inflammation.",
+        "usage": "Take with food to reduce stomach irritation.",
+        "warning": "Long-term use may increase risk of stomach ulcers and kidney issues."
       }
+
     ]
   }
   
