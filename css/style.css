@@ -21,6 +21,10 @@
     cursor: pointer;
 }
 
+.dark-mode {
+    background-color: black;
+    color: white;
+}
 
 @media screen and (min-width: 1200px ){
     #wrapper {
