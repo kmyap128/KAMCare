@@ -15,8 +15,6 @@ const handleGet = (request, response, parsedUrl) => {
     jsonHandler.getJSON(request, response);
   } else if (parsedUrl.pathname === '/start-python') {
     pyHandler.startPythonScript(response);
-  } else if (parsedUrl.pathname === '/stop-python') {
-    pyHandler.stopPythonScript(response);
   } else {
     htmlHandler.getIndex(request, response);
   }
