@@ -3,8 +3,30 @@
 import cv2
 import pytesseract
 import numpy as np
+import platform 
+import os
 
-pytesseract.pytesseract.tesseract_cmd = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
+
+def detectTesseract():
+    system_os = platform.system()
+    tesseract_path = None
+
+    # macOS
+    if system_os == "Darwin":  
+        # M1/M2 Mac
+        tesseract_path = "/opt/homebrew/bin/tesseract"  
+
+        # Intel Mac
+        if not os.path.exists(tesseract_path):
+            tesseract_path = "/usr/local/bin/tesseract" 
+    elif system_os == "Windows":
+        tesseract_path = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
+    else:
+        raise Exception("Unsupported OS")
+
+    return tesseract_path
+
+pytesseract.pytesseract.tesseract_cmd = detectTesseract()
 
 # Reading the video from the webcam
 video = cv2.VideoCapture(0)
