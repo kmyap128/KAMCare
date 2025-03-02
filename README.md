@@ -6,3 +6,4 @@ Need to Install:
 
 - Cv2: pip install cv2
 - PIL: pip install pil
+- gtts: pip install gtts
