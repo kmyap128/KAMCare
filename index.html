@@ -3,8 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/pyodide/v0.27.3/full/pyodide.js"></script>
+
     <title>Medication Dictionary</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="/style.css">
+    <script>
+        let searchTerm = '';
+        let obj = [];
+
+        function fetchJSONData() {
+            fetch('/drug.json')  
+                .then((response) => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! Status: ${response.status}`);
+                    }
+                    return response.json();
+                })
+                .then((data) => {
+                    obj = data.drugs;
+                })
+                .catch((error) => console.error('Failed to fetch data:', error));
+        }
+
+
+            const findDefinition = (term) => {
+            console.log(obj);
+            const info = obj.find((drug) => drug.medicinal_name.toLowerCase() === term.toLowerCase());
+            return info || null;
+        };
+
+        const processTerm = () => {
+            searchTerm = document.querySelector('#drug-term').value.trim();
+            if (!searchTerm) {
+                document.querySelector('#content').innerHTML = '<p>Please enter a term to search.</p>';
+                return;
+            }
+
+            const info = findDefinition(searchTerm);
+
+            if (info) {
+                document.querySelector('#content').innerHTML = `<h3>${info.medicinal_name} (Generic Name: ${info.generic_name})</h3>
+                        <p>Purpose: ${info.purpose}</p>
+                        <p>Usage: ${info.usage}</p>
+                        <p>Warnings: ${info.warning}</p>`;
+            } else {
+                document.querySelector('#content').innerHTML = '<p>No matching drug found.</p>';
+            }
+        };
+
+        window.onload = fetchJSONData();
+
+        window.addEventListener("DOMContentLoaded", (event) => {
+            const el = document.querySelector('#submit');
+            if(el) {
+                el.addEventListener('click', processTerm);
+            }
+        })
+
+    </script>
+
+    
     <script type="module">
         import { GoogleGenerativeAI } from "https://esm.sh/@google/generative-ai";
     
@@ -30,7 +89,7 @@
 <body>
     <div id="wrapper">
         <section id="header">
-            <img id="logo" src="media/kam_care-02.png" alt="KAM Care Logo">
+            <img id="logo" src="/kam_care-02.png" alt="KAM Care Logo">
             <button id="light-mode">🌙</button>
         </section>
         <section id="input">
@@ -38,7 +97,10 @@
             <label for="drug-term">Enter Drug Name</label>
             <input type="text" name="drug-term" id="drug-term">
             <button id="submit">Submit</button>
+
+            <button id="video">Use Camera</button>
         </section>
+
         
         <section id="content">
     
@@ -54,7 +116,6 @@
     </div>
     
     
-    <script src="src/main.js"></script>
 
 </body>
 </html>
