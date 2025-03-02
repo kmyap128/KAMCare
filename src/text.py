@@ -135,8 +135,10 @@ if __name__ == "__main__":
 
     cv2.waitKey(0)
     cv2.destroyAllWindows()
+    json_file_path = os.path.join(os.path.dirname(__file__), "..", "data", "drug.json")
 
-    parsed_results = parseText("image_text.txt", "data/drug.json")
+
+    parsed_results = parseText("image_text.txt", json_file_path)
     if parsed_results:
         print("-" * 50)
         for result in parsed_results:
