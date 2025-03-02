@@ -99,7 +99,7 @@ if __name__ == "__main__":
     
     video_detect()
 
-    parsed_results = parseText("video_detected_text.txt", "../data/drug.json")
+    parsed_results = parseText("video_detected_text.txt", "data/drug.json")
     if parsed_results:
         print("-" * 50)
         for result in parsed_results:
