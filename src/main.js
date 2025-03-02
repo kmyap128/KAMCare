@@ -45,4 +45,17 @@ const findDefinition = (term) => {
     return info || null;
 };
 
+const runPy = () => {
+    var output = $.ajax ({
+        type: "POST",
+        url: "/video.py",
+        async: false,
+    })
+    console.log(output);
+    console.log(output.responseText);
+    return output.responseText;
+}
+
+
+document.querySelector("#video").addEventListener('click', runPy)
 document.querySelector("#submit").addEventListener('click', processTerm);
