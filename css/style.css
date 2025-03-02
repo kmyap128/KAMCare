@@ -1,77 +1,130 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 
+/* General Page Background */
+body, html {
+    background-color: #B3C8CF; /* Middle color */
+    color: #333;
+    font-family: "Lato", sans-serif;
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;
+}
+
+/* Wrapper */
 #wrapper {
-    display: grid;
-    grid-template-columns: 100%;
-    grid-template-areas: 
-    "header"
-    "input"
-    "content"
-    "chatbox";
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     max-width: 100vw;
 }
-#light-mode{
+
+/* Full-Screen Sections */
+#header, #input, #content, #chatbox {
+    width: 80%;
+    max-width: 900px;
+    padding: 40px;
+    margin: 20px auto;
+    text-align: center;
+    border-radius: 10px;
+}
+
+/* Light Mode Button */
+#light-mode {
     position: absolute;
-    top: 40px; 
-    right: 40px; 
-    padding: 10px 20px;
+    top: 40px;
+    right: 40px;
+    padding: 12px 22px;
     background-color: rgb(195, 0, 255);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+#light-mode:hover {
+    background-color: rgb(150, 0, 200);
+}
+
+/* Header */
+#header {
+    background-color: #89A8B2;
+}
+
+/* Input Section */
+#input {
+    background: #E5E1DA;
+}
+
+/* Content Section */
+#content {
+    background: white;
+}
+
+/* Chatbox (Now Below Content) */
+#chatbox {
+    background: #F1F0E8;
+}
+
+/* Buttons */
+button {
+    padding: 14px 20px;
+    font-size: 16px;
+    font-weight: bold;
     border: none;
     border-radius: 5px;
     cursor: pointer;
 }
 
-.dark-mode {
-    background-color: black;
+/* Submit Button */
+#submit {
+    background-color: #0073e6;
     color: white;
 }
 
-@media screen and (min-width: 1200px ){
-    #wrapper {
-        grid-template-columns: 50% 50%;
-        grid-template-areas: 
-        "header         header"
-        "input          chatbox"
-        "content       chatbox"; 
-        max-width: 100vw;
-    }
+#submit:hover {
+    background-color: #005bb5;
 }
 
-#logo {
-    width: 20%;
+/* Camera Button */
+#video {
+    background-color: #28a745;
+    color: white;
 }
 
-#header {
-    background-color: rgb(230, 203, 255);
-    text-align: center;
-    grid-area: header;
+#video:hover {
+    background-color: #1e7e34;
 }
 
-#input {
-    grid-area: input;
-    margin-left: 5vw;
-    margin-right: 5vw;
-}
-
-#content {
-    grid-area: content;
-    margin-left: 5vw;
-    margin-right: 5vw;
-}
-
-#chatbox {
-    grid-area: chatbox;
-    margin-top: 10vh;
-    margin-left: 5vw;
-    margin-right: 5vw;
-}
-
-
+/* Typography */
 h1 {
     font-family: 'Montserrat', 'Helvetica', sans-serif;
-    font-size: 2em;
+    font-size: 2.5em;
 }
 
 label, p {
     font-family: 'Roboto', sans-serif;
+}
+
+/* Smooth Scroll Section Styling */
+.section {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Background Image Effects (Optional, Like Reference) */
+.bgimg {
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.bgimg-1 {
+    background-image: url('backgrounds/back1.jpg');
+}
+
+.bgimg-2 {
+    background-image: url('backgrounds/back2.avif');
 }
