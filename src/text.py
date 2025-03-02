@@ -5,6 +5,7 @@ import pytesseract
 import os
 import platform
 import re       # for text cleaning the "TM, R" symbols
+import json
 
 
 def detectTesseract():
@@ -91,6 +92,31 @@ def draw_boxes_on_text(img):
     return img
 
 
+def parseText(text_file, json_file):
+    # Load JSON data
+    with open(json_file, "r", encoding="utf-8") as file:
+        data = json.load(file)
+
+    # Extract drug data and use lowercase for comparison
+    drug_info = {drug["medicinal_name"].lower(): drug for drug in data["drugs"]}
+
+    # Read extracted text file
+    with open(text_file, "r", encoding="utf-8") as file:
+        text_content = file.read().lower()  # Convert entire text to lowercase
+
+    # Use a set to track found drug names
+    found_drugs = set()
+    results = []
+
+    # Check if any medicinal name is present in the text
+    for drug_name in drug_info:
+        if drug_name in text_content and drug_name not in found_drugs:
+            results.append(drug_info[drug_name])
+            found_drugs.add(drug_name)  # Ensure it doesn't get added again
+
+    return results
+
+
 if __name__ == "__main__":
     pytesseract.pytesseract.tesseract_cmd = detectTesseract()
     imageName = input("Enter Image Name with Extension (image.png): ")
@@ -109,3 +135,16 @@ if __name__ == "__main__":
 
     cv2.waitKey(0)
     cv2.destroyAllWindows()
+
+    parsed_results = parseText("image_text.txt", "data/drug.json")
+    if parsed_results:
+        print("-" * 50)
+        for result in parsed_results:
+            print(f"Medicinal Name: {result['medicinal_name']}")
+            print(f"Generic Name: {result['generic_name']}")
+            print(f"Purpose: {result['purpose']}")
+            print(f"Usage: {result['usage']}")
+            print(f"Warning: {result['warning']}")
+        print("-" * 50)
+    else:
+        print("No matches found.")
