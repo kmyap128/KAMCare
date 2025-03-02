@@ -47,6 +47,7 @@ def openImage(imageName):
 def detectText(img):
     """Detects text using Tesseract and stores it in a file."""
     text = pytesseract.image_to_string(img)
+    text = clean_text(text)
     
     # Save text to image_text.txt
     with open("image_text.txt", "w") as file:
@@ -95,14 +96,14 @@ if __name__ == "__main__":
     imageName = input("Enter Image Name with Extension (image.png): ")
     img = openImage(imageName)
     
-    # Detect text and store in file
+    # detect text and store in file
     text = detectText(img)
 
-    # Draw bounding boxes on characters
+    # draw bounding boxes on characters
     img = draw_boxes_on_character(img)
     cv2.imshow("Character Bounding Boxes", img)
 
-    # Draw bounding boxes on full text
+    # draw bounding boxes on full text
     img = draw_boxes_on_text(img)
     cv2.imshow("Text Bounding Boxes", img)
 
