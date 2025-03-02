@@ -1,9 +1,9 @@
 [
     {
-        "Medicinal Name": "Acetaminophen",
-        "Generic Name": "Tylenol",
-        "Purpose": "Reduces pain and fever.",
-        "Usage": "Take as needed, following dosage guidelines.",
-        "Warning": "Excessive use may cause liver damage."
+        "medicinal_name": "Acetaminophen",
+        "generic_name": "Tylenol",
+        "purpose": "Reduces pain and fever.",
+        "usage": "Take as needed, following dosage guidelines.",
+        "warning": "Excessive use may cause liver damage."
     }
 ]

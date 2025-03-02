@@ -107,11 +107,11 @@ if __name__ == "__main__":
         print("-" * 50)
         for result in parsed_results:
             output_data.append({
-            "Medicinal Name": result['medicinal_name'],
-            "Generic Name": result['generic_name'],
-            "Purpose": result['purpose'],
-            "Usage": result['usage'],
-            "Warning": result['warning']
+            "medicinal_name": result['medicinal_name'],
+            "generic_name": result['generic_name'],
+            "purpose": result['purpose'],
+            "usage": result['usage'],
+            "warning": result['warning']
         })
         with open("output_results.json", "w", encoding="utf-8") as json_file:
             json.dump(output_data, json_file, indent=4)

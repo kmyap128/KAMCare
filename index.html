@@ -10,7 +10,9 @@
     <link rel="stylesheet" type="text/css" href="/style.css">
     <script>
         let searchTerm = '';
+        let mode = 'text';
         let obj = [];
+        let output = [];
 
         function fetchJSONData() {
             fetch('/drug.json')  
@@ -26,15 +28,67 @@
                 .catch((error) => console.error('Failed to fetch data:', error));
         }
 
+        function fetchJSONvideo() {
+            fetch('/output_results.json')  
+                .then((response) => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! Status: ${response.status}`);
+                    }
+                    return response.json();
+                })
+                .then((data) => {
+                    output = data.drugs;
+                })
+                .catch((error) => console.error('Failed to fetch data:', error));
+        }
+
 
             const findDefinition = (term) => {
-            console.log(obj);
-            const info = obj.find((drug) => drug.medicinal_name.toLowerCase() === term.toLowerCase());
-            return info || null;
+                console.log(obj);
+                const info = obj.find((drug) => drug.medicinal_name.toLowerCase() === term.toLowerCase());
+                return info || null;
+        };
+
+        const startSpeech = () => {
+            let text = getContentText();
+            fetch('/start-text-to-speech', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ text: text })  
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Text-to-Speech conversion complete:', data);
+                
+                const audio = new Audio(data.file);  
+                audio.play();
+            })
+            .catch(error => console.error('Error:', error));
+        }
+
+        const getContentText = () => {
+            const contentElement = document.querySelector('#content');
+            const paragraphs = contentElement.querySelectorAll('p');
+            const headers = contentElement.querySelectorAll('h3');
+            let text = '';
+            headers.forEach(h3 => {
+                text += h3.textContent + ' ';
+            });
+            paragraphs.forEach(p => {
+                text += p.textContent + ' ';  
+            });
+            return text.trim();  
         };
 
         const processTerm = () => {
-            searchTerm = document.querySelector('#drug-term').value.trim();
+            if( mode == 'text'){
+                searchTerm = document.querySelector('#drug-term').value.trim();
+            }
+            // else if (mode == 'video') {
+            //     fetchJSONvideo();
+            //     searchTerm = output.medicinal_name;
+            // }
+
             if (!searchTerm) {
                 document.querySelector('#content').innerHTML = '<p>Please enter a term to search.</p>';
                 return;
@@ -46,7 +100,11 @@
                 document.querySelector('#content').innerHTML = `<h3>${info.medicinal_name} (Generic Name: ${info.generic_name})</h3>
                         <p>Purpose: ${info.purpose}</p>
                         <p>Usage: ${info.usage}</p>
-                        <p>Warnings: ${info.warning}</p>`;
+                        <p>Warnings: ${info.warning}</p>
+                        <br>
+                        <button id="text-to-speech">Text To Speech</button>`;
+
+                document.querySelector('#text-to-speech').addEventListener('click', startSpeech);
             } else {
                 document.querySelector('#content').innerHTML = '<p>No matching drug found.</p>';
             }
@@ -55,7 +113,7 @@
         window.onload = fetchJSONData();
 
         const startPy = () => {
-            fetch("/start-python")
+            return fetch("/start-python")
                 .then(response => response.json())
                 .then(data => console.log(data.message))
                 .catch(error => console.error("Error:", error));
@@ -71,7 +129,11 @@
         window.addEventListener("DOMContentLoaded", (event) => {
             const el = document.querySelector('#video');
             if(el) {
-                el.addEventListener('click', startPy);
+                el.addEventListener('click', async () => {
+                    await startPy();
+                    mode = 'video';
+                    document.querySelector('#drug-term').value = output.medicinal_name;
+                });
             }
         });
     </script>

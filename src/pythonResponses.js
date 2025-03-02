@@ -28,7 +28,61 @@ const startPythonScript = (response) => {
   }
 };
 
+const startTextToSpeech = (request, response) => {
+    let body = '';
+    request.on('data', chunk => {
+        body += chunk.toString();
+    });
+    request.on('end', () => {
+        const { text } = JSON.parse(body);  // Extract text from the body of the request
+    
+        if (!text) {
+          response.statusCode = 400;
+          response.end(JSON.stringify({ error: 'No text provided' }));
+          return;
+        }
+        const pyPath = path.join(__dirname, 'text-to-speech.py');
+
+    
+        // Spawn Python process to handle Text-to-Speech
+        const pythonProcess = spawn('python', [pyPath, text]);
+        
+        let result = '';
+    
+        pythonProcess.stdout.on('data', (data) => {
+          result += data.toString();
+        });
+    
+        pythonProcess.stderr.on('data', (data) => {
+          console.error(`Python Error: ${data}`);
+        });
+    
+        pythonProcess.on('close', (code) => {
+          if (code === 0) {
+            try {
+              const parsedResult = JSON.parse(result);  // Expecting a JSON response from Python
+    
+              if (parsedResult.file) {
+                response.statusCode = 200;
+                response.setHeader('Content-Type', 'application/json');
+                response.end(JSON.stringify({ message: 'Speech generated', file: parsedResult.file }));
+              } else {
+                response.statusCode = 500;
+                response.end(JSON.stringify({ error: 'Error generating speech' }));
+              }
+            } catch (error) {
+              response.statusCode = 500;
+              response.end(JSON.stringify({ error: 'Error parsing Python response' }));
+            }
+          } else {
+            response.statusCode = 500;
+            response.end(JSON.stringify({ error: `Python process exited with code ${code}` }));
+          }
+        });
+      });
+};
 
 module.exports = {
   startPythonScript,
+  startTextToSpeech,
 };
