@@ -237,6 +237,111 @@
         "purpose": "Prevents blood clots in patients with heart conditions.",
         "usage": "Take at the same time daily as directed.",
         "warning": "Avoid sudden changes in diet, especially green leafy vegetables."
+      },
+      {
+        "medicinal_name": "Fexofenadine",
+        "generic_name": "Allegra",
+        "purpose": "Used to treat allergies.",
+        "usage": "Take once daily, with or without food.",
+        "warning": "Avoid fruit juices as they may reduce effectiveness."
+      },
+      {
+        "medicinal_name": "Rivaroxaban",
+        "generic_name": "Xarelto",
+        "purpose": "Used to prevent blood clots and strokes.",
+        "usage": "Take with food to improve absorption.",
+        "warning": "May increase bleeding risk. Inform doctor before surgery."
+      },
+      {
+        "medicinal_name": "Allopurinol",
+        "generic_name": "Zyloprim",
+        "purpose": "Used to treat gout and kidney stones.",
+        "usage": "Take after meals to reduce stomach upset.",
+        "warning": "Stay hydrated to prevent kidney stone formation."
+      },
+      {
+        "medicinal_name": "Naproxen",
+        "generic_name": "Aleve",
+        "purpose": "Used to relieve pain and inflammation.",
+        "usage": "Take with food or milk to reduce stomach upset.",
+        "warning": "Long-term use may increase risk of heart attack and stroke."
+      },
+      {
+        "medicinal_name": "Famotidine",
+        "generic_name": "Pepcid",
+        "purpose": "Used to treat acid reflux and ulcers.",
+        "usage": "Take before meals as directed.",
+        "warning": "Long-term use may reduce vitamin B12 absorption."
+      },
+      {
+        "medicinal_name": "Dextroamphetamine",
+        "generic_name": "Adderall",
+        "purpose": "Used to treat ADHD and narcolepsy.",
+        "usage": "Take in the morning to avoid insomnia.",
+        "warning": "May be habit-forming. Avoid alcohol and caffeine."
+      },
+      {
+        "medicinal_name": "Amphetamine",
+        "generic_name": "Adderall",
+        "purpose": "Used to treat ADHD and narcolepsy.",
+        "usage": "Take in the morning to avoid insomnia.",
+        "warning": "May be habit-forming. Avoid alcohol and caffeine."
+      },
+      {
+        "medicinal_name": "Ranitidine",
+        "generic_name": "Zantac",
+        "purpose": "Used to reduce stomach acid and treat GERD.",
+        "usage": "Take before meals as needed.",
+        "warning": "May cause dizziness. Avoid long-term use without doctor consultation."
+      },
+      {
+        "medicinal_name": "Montelukast",
+        "generic_name": "Singulair",
+        "purpose": "Prevents asthma and seasonal allergies.",
+        "usage": "Take once daily in the evening.",
+        "warning": "May cause mood changes and vivid dreams."
+      },
+      {
+        "medicinal_name": "Metoprolol",
+        "generic_name": "Lopressor, Toprol XL",
+        "purpose": "Used to treat high blood pressure and heart conditions.",
+        "usage": "Take with or after food for better absorption.",
+        "warning": "May cause fatigue and slow heart rate."
+      },
+      {
+        "medicinal_name": "Acetaminophen",
+        "generic_name": "Tylenol",
+        "purpose": "Reduces pain and fever.",
+        "usage": "Take as needed, following dosage guidelines.",
+        "warning": "Excessive use may cause liver damage."
+      },
+      {
+        "medicinal_name": "Ibuprofen",
+        "generic_name": "Advil",
+        "purpose": "Reduces pain, fever, and inflammation.",
+        "usage": "Take with food to reduce stomach irritation.",
+        "warning": "Long-term use may increase risk of stomach ulcers and kidney issues."
+      },
+      {
+        "medicinal_name": "Duloxetine",
+        "generic_name": "Cymbalta",
+        "purpose": "Used to treat depression, anxiety, and nerve pain.",
+        "usage": "Take once daily with or without food.",
+        "warning": "May cause dizziness and increased suicidal thoughts in young adults."
+      },
+      {
+        "medicinal_name": "Trazodone",
+        "generic_name": "Desyrel",
+        "purpose": "Used to treat depression and insomnia.",
+        "usage": "Take with food, usually at bedtime.",
+        "warning": "May cause drowsiness and dizziness."
+      },
+      {
+        "medicinal_name": "Simvastatin",
+        "generic_name": "Zocor",
+        "purpose": "Lowers cholesterol and reduces the risk of cardiovascular disease.",
+        "usage": "Take once daily in the evening.",
+        "warning": "Avoid grapefruit and excessive alcohol."
       }
     ]
   }
