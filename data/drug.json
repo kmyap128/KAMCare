@@ -372,7 +372,7 @@
     "warning": "Side effects may include soreness at the injection site or mild fever. People with severe allergies to yeast should consult a doctor."
   },
   {
-    "medicinal_name": "Measles, Mumps, and Rubella (MMR) Vaccine",
+    "medicinal_name": "Measles, Mumps, and Rubella Vaccine",
     "generic_name": "MMR Vaccine",
     "purpose": "Provides immunity against measles, mumps, and rubella viruses.",
     "usage": "Given in two doses, typically in childhood (12-15 months and 4-6 years old).",
@@ -386,15 +386,15 @@
     "warning": "Common side effects include redness or swelling at the injection site. Rare but severe allergic reactions may occur."
   },
   {
-    "medicinal_name": "Human Papillomavirus (HPV) Vaccine",
+    "medicinal_name": "Human Papillomavirus Vaccine",
     "generic_name": "HPV Vaccine",
     "purpose": "Prevents infections from human papillomavirus, which can cause cervical and other cancers.",
     "usage": "Given in 2-3 doses, typically recommended for adolescents before exposure to the virus.",
     "warning": "Mild pain, swelling, or dizziness may occur. Not recommended during pregnancy."
   },
   {
-    "medicinal_name": "Varicella (Chickenpox) Vaccine",
-    "generic_name": "Varicella Vaccine",
+    "medicinal_name": "Varicella Vaccine",
+    "generic_name": "Chickenpox Vaccine",
     "purpose": "Provides immunity against the varicella-zoster virus, which causes chickenpox.",
     "usage": "Administered in two doses, typically in childhood (12-15 months and 4-6 years old).",
     "warning": "Mild rash or fever may occur. Avoid if pregnant or immunocompromised unless advised by a doctor."
