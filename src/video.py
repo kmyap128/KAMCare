@@ -7,7 +7,6 @@ import platform
 import os
 import json
 
-
 def detectTesseract():
     system_os = platform.system()
     tesseract_path = None
