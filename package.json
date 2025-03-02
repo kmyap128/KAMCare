@@ -1,5 +1,13 @@
 {
-  "dependencies": {
-    "@google/generative-ai": "^0.22.0"
-  }
+  "name": "src",
+  "version": "1.0.0",
+  "main": "main.js",
+  "scripts": {
+    "pretest": "eslint ./src --fix",
+    "test": "echo \"Tests complete\"",
+    "start": "node ./src/server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": ""
 }
